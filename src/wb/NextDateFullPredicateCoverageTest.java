@@ -5,20 +5,23 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class NextDateFullStatementCoverageTest {
+class NextDateFullPredicateCoverageTest {
 
 	private NextDate nextDate;
 
 	@BeforeEach
-	void initializeNextDate()
-	{
-		// Doesn't matter what we initialize it to
+	void setUp() {
 		nextDate = new NextDate(0, 0, 0);
 	}
-	
+
+	/*
+	 * The same tests as for the statement coverage (NextDateFullStatementCoverage)
+	 */
+
 	@Test
 	void testInvalidDate()
 	{
+		// only one is needed for full statement coverage (so that the return statement on line 30 is reached)
 		assertEquals("invalid Input Date", nextDate.run(15, 0, 2001));
 	}
 
@@ -57,4 +60,40 @@ class NextDateFullStatementCoverageTest {
 		assertEquals("Invalid Input Date", nextDate.run(2, 29, 2009));
 		assertEquals("Invalid Input Date", nextDate.run(2, 30, 2008));
 	}
+	
+	/*
+	 *  More tests that test all predicates
+	 *  This is the interesting predicate that we want to:
+	 *  1. Ensure that for each atomic expression, it influences the final result => each need to be true, making the
+	 *     entire predicate true.
+	 *  2. Ensure that the entire predicate evaluates to false at least once
+	 *     (this is the case for all other test cases, so does not need to be tested specifically)
+	 * (day < 1 || month < 1 || month >12 || year < 1801 || year > 2021)
+	 */
+	
+	// Testing for a day less than one is already done at line 25 as part of the statement/branch coverage tests
+	// and does not need to be tested again.
+
+	@Test
+	void testMonthLessThanOneIsInvalid()
+	{
+		assertEquals("invalid Input Date", nextDate.run(0, 1, 2001));
+	}
+	@Test
+	void testMonthMoreThan12Isinvalid()
+	{
+		assertEquals("invalid Input Date", nextDate.run(13, 1, 2001));
+	}
+	@Test
+	void testYearBefore1801Isinvalid()
+	{
+		assertEquals("invalid Input Date", nextDate.run(1, 1, 1800));
+	}
+	@Test
+	void testYearAfter2021Isinvalid()
+	{
+		assertEquals("invalid Input Date", nextDate.run(1, 1, 2022));
+	}
+	
+	
 }
