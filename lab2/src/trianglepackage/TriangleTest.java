@@ -192,13 +192,13 @@ public class TriangleTest {
 	
 	@Test
 	public void T21() {
-		assertEquals("", invalidTriangle.classify()); // don't know
+		assertEquals("impossible", invalidTriangle.classify()); // don't know, but "impossible" makes sense
 	}
 
 	@Test
 	public void T22() {
 		var triangle = new Triangle('a', 'b', 'c');
-		assertEquals("", triangle.classify()); // don't know
+		assertEquals("scalene", triangle.classify()); // don't know, but "scalene" makes sense
 	}
 	
 	/*
@@ -260,7 +260,7 @@ public class TriangleTest {
 
 	@Test
 	public void T33() {
-		assertEquals(false, new Triangle(3, 4, 5).isScalene());
+		assertEquals(true, new Triangle(3, 4, 5).isScalene());
 	}
 	
 	@Test
@@ -387,7 +387,7 @@ public class TriangleTest {
 
 	@Test
 	public void T56() {
-		assertEquals(0.433, new Triangle(1, 1, 2).getArea(), epsilon);
+		assertEquals(0.433, new Triangle(1, 1, 1).getArea(), epsilon);
 	}
 
 	@Test
