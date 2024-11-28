@@ -1,7 +1,6 @@
 
 package trianglepackage;
 
-
 /**
  * Triangle. The main function takes 3 positive whole-number lengths
  * to be typed in as command line arguments. The program responds
@@ -64,7 +63,7 @@ public class Triangle
 	{
 		return side1 + "," + side2 + "," + side3;
 	}
-
+	
 	/**
 	 * Gets the perimeter of the triangle.
 	 * @return -1 if input values are invalid, otherwise the perimeter.
