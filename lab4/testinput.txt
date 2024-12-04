@@ -1,0 +1,5 @@
+Hello, world!
+This is a test file.
+It contains several lines of text.
+Some lines contain patterns like "test" or "example".
+Feel free to modify this file.
